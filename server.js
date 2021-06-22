@@ -3,8 +3,10 @@ const app = require("./app.js")
 require("dotenv").config();
 const PORT = process.env.PORT || 3003;
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the Budget App!")
+})
 app.listen(PORT, () => console.log("Listening on port:", PORT));
-
 
 
 

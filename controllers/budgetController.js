@@ -1,8 +1,8 @@
 const express = require("express");
 const budgets = express.Router();
-const budgetsArray = require("../models/bookmark.js");
+const budgetsArray = require("../models/budget.js");
 
-const validateUrl = (req, res, next) => {
+// const validateUrl = (req, res, next) => {
 //     const http = "http://";
 //     const https = "https://";
 //     var fullUrl = req.protocol + "://" + req.get("host") + req.url;
@@ -39,14 +39,14 @@ const validateUrl = (req, res, next) => {
     }
   });
   
-  budgets.post("/", validateBody, (req, res) => {
+  budgets.post("/", (req, res) => {
     // Create the new resource
     budgetsArray.push(req.body);
     // Send back the new resource as confirmation
     res.json(budgetsArray[budgetsArray.length - 1]);
   });
   
-  budgets.put("/:index", validateBody, (req, res) => {
+  budgets.put("/:index", (req, res) => {
     const { index } = req.params;
   
     if (budgetsArray[index]) {
